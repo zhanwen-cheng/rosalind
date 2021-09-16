@@ -1,0 +1,49 @@
+#!/usr/bin/env python
+import numpy as np
+with open("C:/Users/Cheng Zhanwen/Desktop/rosalind_prob.txt",'r') as f:
+        lines = f.readlines()
+        first_line = lines[0].strip()
+        acont = first_line.count('A')
+        tcont = first_line.count('T')
+        ccont = first_line.count('C')
+        gcont = first_line.count('G')
+        second_line = lines[1].strip().split()
+        out_b = []
+        for i in second_line:
+            i = float(i)
+            b = np.log10(((i/2)**ccont) * ((i/2)**gcont) * ((0.5-i/2)**acont) * ((0.5-i/2)**tcont)) 
+            out_b.append(b)
+f.close()
+print(" ".join(str(i) for i in out_b))
+
+
+# def cal_ran(cnta,cntt,cntc,cntg,arraa):
+#     out_b = []
+#     for i in arraa:
+#         i = float(i)
+#         b = np.log10(((i/2)**cntc) * ((i/2)**cntg) * ((0.5-i/2)**cnta) * ((0.5-i/2)**cntt)) 
+#         out_b.append(b)
+#     return((out_b)
+
+# def cal_len(filepath):
+#     with open(filepath,'r') as f:
+#         lines = f.readlines()
+#         first_line = lines[0].strip()
+#         acont = first_line.count('A')
+#         tcont = first_line.count('T')
+#         ccont = first_line.count('C')
+#         gcont = first_line.count('G')
+#         second_lin = line[1].strip().split()
+#         return(acont,tcont,ccont,gcont)
+
+# if __name__ == "__main__":
+#     with open("C:/Users/Cheng Zhanwen/Desktop/sample.txt",'r') as f:
+#         lines = f.readlines()
+#         first_line = lines[0].strip()
+#         acont = first_line.count('A')
+#         tcont = first_line.count('T')
+#         ccont = first_line.count('C')
+#         gcont = first_line.count('G')
+#         second_line = lines[1].strip().split()
+#         cal_ran(acont,tcont,ccont,gcont,second_line)
+#     f.close()
