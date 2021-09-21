@@ -1,0 +1,15 @@
+#! /user/bin/env python
+
+#from scipy.special import comb, perm
+
+with open ("./rosalind_sign.txt") as f:
+    lines = f.readlines()
+    n = int(lines[0].strip())
+    list_n = list(range(1,n+1)) + list(range(-n,0))
+    print(n*(n-1)*(2**n))
+    for i in list_n:
+        for k in list_n:
+            if abs(i) == abs(k):
+                continue;
+            else:
+                print(i,k)
