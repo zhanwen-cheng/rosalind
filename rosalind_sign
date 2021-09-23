@@ -1,15 +1,35 @@
 #! /user/bin/env python
 
+import itertools
+import numpy as np
+import math
+
+def sign(n):
+    whole_list = list(range(1,n+1)) + list(range(-n,0))
+    all_perm = itertools.permutations(whole_list,n)
+    for i in all_perm:
+        absi = list(set(np.abs(i)))####这一步在去除重复元素
+        if len(absi) == len(i):
+            print(" ".join(str(t) for t in i))
+        else:
+            continue
+
+if __name__ =="__main__":
+    with open("C:/Users/Cheng Zhanwen/Desktop/rosalind_sign.txt") as f:
+        tot_n = int(f.readlines()[0].strip())
+        print(math.factorial(tot_n)* 2**tot_n)
+        sign(tot_n)
+
 #from scipy.special import comb, perm
 
-with open ("./rosalind_sign.txt") as f:
-    lines = f.readlines()
-    n = int(lines[0].strip())
-    list_n = list(range(1,n+1)) + list(range(-n,0))
-    print(n*(n-1)*(2**n))
-    for i in list_n:
-        for k in list_n:
-            if abs(i) == abs(k):
-                continue;
-            else:
-                print(i,k)
+#with open ("./rosalind_sign.txt") as f:
+#    lines = f.readlines()
+#    n = int(lines[0].strip())
+#    list_n = list(range(1,n+1)) + list(range(-n,0))
+#    print(n*(n-1)*(2**n))
+#    for i in list_n:
+#        for k in list_n:
+#            if abs(i) == abs(k):
+#                continue;
+#            else:
+#               print(i,k)
