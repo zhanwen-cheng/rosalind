@@ -1,0 +1,29 @@
+# !/user/bin/env python
+
+import re
+
+def match_sseq(strg,stri):
+    pos = 0
+    pos_list = []
+    sub_stri = stri
+    for i in range(0,len(strg)):
+        pos_i = re.search(strg[i],sub_stri).span()[0]
+        pos = pos_i+pos+1
+        #print(pos, sep=' ')
+        pos_list.append(pos)
+        sub_stri = stri[pos:len(stri)]
+    print(" ".join(str(posi) for posi in pos_list))
+        
+if __name__ == "__main__":
+    seqTest = {}
+    with open('C:/Users/Cheng Zhanwen/Desktop/rosalind_sseq.txt', 'rt') as f:
+        for line in f:  
+            line = line.rstrip()
+            if line.startswith('>'):
+                seqName = line[1:]
+                seqTest[seqName] = ''
+                continue
+            seqTest[seqName] += line
+    f.close()
+    #print(seqTest)
+    match_sseq(seqTest[list(seqTest.keys())[1]],seqTest[list(seqTest.keys())[0]])
